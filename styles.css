@@ -662,7 +662,7 @@ h1, h2, h3 {
 .cta .btn-primary { background: #0b0913; box-shadow: 0 14px 34px -10px rgba(0,0,0,0.6); }
 .cta .btn-primary:hover { background: #14111f; }
 
-/* ---------- Learn more / waitlist ---------- */
+/* ---------- Learn more ---------- */
 .learn { padding: 100px 0; }
 .learn-card {
   position: relative;
