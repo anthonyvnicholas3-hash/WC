@@ -26,23 +26,40 @@ The World Cup banner and the "Road to the Final" list are **data-driven** and
 - Add a `result` (e.g. `'2-0'`) to a match and it shows the score and a ✔/✕
   on whether the AI pick was right.
 
-### Editing matches
+### Don't know the teams yet?
 
-Open `matches.js`, edit the `PREDICTAI_MATCHES` list (teams, flags, date,
-pick, confidence, result), save, re-upload that one file. Done.
+That's the normal case before/early in a tournament. Leave a team as **`TBD`**
+(or blank) and the site shows a tidy "TBD" placeholder and still counts down to
+kickoff. The starter data (`matches.js` / `fixtures-template.csv`) is the
+knockout bracket with **all teams set to TBD**. As each round is decided, type
+in the real teams — and your pick/confidence — and the page fills in.
 
-### Zero-upload option — Google Sheet
+### Recommended: manage it from a Google Sheet (no re-uploads ever)
 
-To manage fixtures without touching any file:
+1. **Create the sheet from the template.** In Google Sheets: **File → Import →
+   Upload → `fixtures-template.csv`** (choose *Replace current sheet*). You now
+   have the bracket with the right column headers.
+2. **Publish it as CSV.** **File → Share → Publish to web → pick the sheet →
+   CSV → Publish**, and copy the link it gives you.
+3. **Connect it once.** Paste that link into `sheetCsvUrl` in `matches.js`,
+   then upload `matches.js` one final time.
 
-1. Make a Google Sheet with headers in row 1:
-   `stage, date, home, homeFlag, away, awayFlag, pick, confidence, result`
-2. **File → Share → Publish to web → (this sheet) → CSV → Publish.**
-3. Copy that CSV link into `sheetCsvUrl` in `matches.js` (one time).
+From then on you **only edit the spreadsheet** — add teams, set your pick and
+confidence, and once a game is played type the score into `result` (e.g. `2-1`).
+The live site reflects it on the next page load. No code, no more uploads. If
+the sheet is ever unreachable, the site falls back to the list in `matches.js`.
 
-After that, edit the spreadsheet anytime and the live site updates on the
-next page load — no code, no re-upload. If the sheet is ever unreachable,
-the site falls back to the built-in list in `matches.js`.
+**Columns:** `stage, date, home, homeFlag, away, awayFlag, pick, confidence, result`
+- `stage` = `group` · `r16` · `qf` · `sf` · `third` · `final` (or any text)
+- `date` = `YYYY-MM-DD HH:mm` (in the sheet's timezone offset) — edit these to the official schedule
+- `homeFlag` / `awayFlag` = an emoji flag (🇪🇸); leave blank for TBD
+- `pick` / `confidence` = your prediction; leave blank until you decide
+- `result` = blank until played, then e.g. `2-1` (the ✔/✕ is worked out for you)
+
+### Or just edit `matches.js`
+
+Prefer not to use a sheet? Edit the `PREDICTAI_MATCHES` list in `matches.js`
+directly and re-upload that one file.
 
 ## Languages
 

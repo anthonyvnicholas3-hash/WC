@@ -29,6 +29,8 @@
     });
   }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function isTBD(n) { return !n || /^tbd$/i.test(String(n).trim()); }
+  function hasVal(v) { return v != null && String(v).trim() !== ''; }
 
   function toDate(str) {
     if (!str) return null;
@@ -143,7 +145,11 @@
   }
 
   function teamHtml(name, flag) {
-    return '<div class="wc-team"><span class="wc-flag-e">' + esc(flag) + '</span>' +
+    if (isTBD(name)) {
+      return '<div class="wc-team"><span class="wc-flag-e tbd">?</span>' +
+             '<span class="wc-team-name" data-i18n="status.tbd">TBD</span></div>';
+    }
+    return '<div class="wc-team"><span class="wc-flag-e">' + esc(flag || '🏳️') + '</span>' +
            '<span class="wc-team-name">' + esc(name) + '</span></div>';
   }
 
@@ -152,8 +158,8 @@
     if (!el || !m) return;
     var st = statusOf(m._d);
     var stg = stageLabel(m.stage);
-    var predTpl = t('wc.predvalue', '{team} Win · <b>{pct}%</b>');
-    var predVal = predTpl.replace('{team}', esc(m.pick || m.home)).replace('{pct}', esc(m.confidence));
+    var teamsKnown = !isTBD(m.home) && !isTBD(m.away);
+    var hasPick = teamsKnown && !isTBD(m.pick) && hasVal(m.pick);
 
     var head =
       '<div class="wc-meta">' +
@@ -186,14 +192,23 @@
              '<span class="wc-vs-badge">VS</span>' + teamHtml(m.away, m.awayFlag) + '</div>';
 
     var win = winnerOf(m);
-    var correct = win && win !== 'draw' ? (win === m.pick) : null;
+    var correct = (hasPick && win && win !== 'draw') ? (win === m.pick) : null;
     var tag = correct === null ? '' :
       (correct ? ' <span class="wc-hit ok">✔</span>' : ' <span class="wc-hit no">✕</span>');
 
+    var predInner;
+    if (hasPick) {
+      var predVal = hasVal(m.confidence)
+        ? t('wc.predvalue', '{team} Win · <b>{pct}%</b>').replace('{team}', esc(m.pick)).replace('{pct}', esc(m.confidence))
+        : esc(m.pick);
+      predInner = '<span class="wc-pred-label" data-i18n="wc.predlabel">AI Pick</span>' +
+                  '<span class="wc-pred-value">' + predVal + tag + '</span>';
+    } else {
+      predInner = '<span class="wc-tbc" data-i18n="wc.tbc">Teams to be confirmed</span>';
+    }
+
     var pred =
-      '<div class="wc-pred">' +
-        '<span class="wc-pred-label" data-i18n="wc.predlabel">AI Pick</span>' +
-        '<span class="wc-pred-value">' + predVal + tag + '</span>' +
+      '<div class="wc-pred">' + predInner +
         '<a href="https://180score.com/" target="_blank" rel="noopener noreferrer" class="wc-pred-cta" data-i18n="wc.predcta">Learn more →</a>' +
       '</div>';
 
@@ -206,14 +221,23 @@
            '<span class="wc-lbl" data-i18n="' + key + '">' + fb + '</span></div>';
   }
 
+  function fxTeam(name, flag) {
+    if (isTBD(name)) {
+      return '<span class="fx-team fx-tbd"><span class="fx-flag">•</span> <span data-i18n="status.tbd">TBD</span></span>';
+    }
+    return '<span class="fx-team"><span class="fx-flag">' + esc(flag || '🏳️') + '</span> ' + esc(name) + '</span>';
+  }
+
   function renderList(list) {
     var el = document.getElementById('fixturesList');
     if (!el) return;
     el.innerHTML = list.map(function (m) {
       var st = statusOf(m._d);
       var stg = stageLabel(m.stage);
+      var teamsKnown = !isTBD(m.home) && !isTBD(m.away);
+      var hasPick = teamsKnown && !isTBD(m.pick) && hasVal(m.pick);
       var win = winnerOf(m);
-      var correct = win && win !== 'draw' ? (win === m.pick) : null;
+      var correct = (hasPick && win && win !== 'draw') ? (win === m.pick) : null;
 
       var meta = (st === 'live')
         ? '<span class="fx-live"><span class="wc-live-dot"></span><span data-i18n="status.live">LIVE</span></span>'
@@ -221,9 +245,15 @@
             ? '<span class="fx-date" data-i18n="status.ft">Full Time</span>'
             : '<span class="fx-date">' + fmtDate(m.date) + ' · ' + esc(fmtTime(m.date)) + '</span>');
 
-      var pickBits = '<span class="fx-pick-val">' + esc(m.pick) + ' · <b>' + esc(m.confidence) + '%</b>' +
-        (correct === null ? '' : (correct ? ' <span class="fx-hit ok">✔</span>' : ' <span class="fx-hit no">✕</span>')) +
-        '</span>';
+      var pickBits;
+      if (hasPick) {
+        pickBits = '<span class="fx-pick-val">' + esc(m.pick) +
+          (hasVal(m.confidence) ? ' · <b>' + esc(m.confidence) + '%</b>' : '') +
+          (correct === null ? '' : (correct ? ' <span class="fx-hit ok">✔</span>' : ' <span class="fx-hit no">✕</span>')) +
+          '</span>';
+      } else {
+        pickBits = '<span class="fx-pick-val fx-muted">—</span>';
+      }
       var resultBit = (st !== 'upcoming' && m.result)
         ? '<span class="fx-score">' + esc(m.result) + '</span>' : '';
 
@@ -233,10 +263,10 @@
       return '<div class="' + cls + '">' +
         '<div class="fx-stage"><span class="fx-badge">' + stg.html + '</span>' + meta + '</div>' +
         '<div class="fx-teams">' +
-          '<span class="fx-team"><span class="fx-flag">' + esc(m.homeFlag) + '</span> ' + esc(m.home) + '</span>' +
+          fxTeam(m.home, m.homeFlag) +
           resultBit +
           '<span class="fx-vs">VS</span>' +
-          '<span class="fx-team"><span class="fx-flag">' + esc(m.awayFlag) + '</span> ' + esc(m.away) + '</span>' +
+          fxTeam(m.away, m.awayFlag) +
         '</div>' +
         '<div class="fx-pick"><span class="fx-pick-label" data-i18n="fixtures.aipick">AI pick</span>' + pickBits + '</div>' +
         '<a href="https://180score.com/" target="_blank" rel="noopener noreferrer" class="fx-cta" data-i18n="fixtures.cta">See prediction →</a>' +

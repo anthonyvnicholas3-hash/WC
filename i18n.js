@@ -37,7 +37,8 @@
       'fixtures.sub': 'AI predictions for the key knockout fixtures — updated as the bracket unfolds.',
       'stage.qf': 'Quarter-final', 'stage.sf': 'Semi-final', 'stage.third': 'Third place', 'stage.final': 'Final',
       'stage.group': 'Group stage', 'stage.r16': 'Round of 16',
-      'status.live': 'LIVE', 'status.ft': 'Full Time', 'status.next': 'Next up',
+      'status.live': 'LIVE', 'status.ft': 'Full Time', 'status.next': 'Next up', 'status.tbd': 'TBD',
+      'wc.tbc': 'Teams to be confirmed',
       'fixtures.aipick': 'AI pick', 'fixtures.cta': 'See prediction →',
 
       'strip.live.t': 'Live Matches', 'strip.live.s': 'Watch anytime',
@@ -122,7 +123,8 @@
       'fixtures.sub': 'Ramalan AI untuk perlawanan kalah mati utama — dikemas kini apabila pusingan berlangsung.',
       'stage.qf': 'Suku akhir', 'stage.sf': 'Separuh akhir', 'stage.third': 'Tempat ketiga', 'stage.final': 'Final',
       'stage.group': 'Peringkat kumpulan', 'stage.r16': 'Pusingan 16',
-      'status.live': 'LANGSUNG', 'status.ft': 'Tamat Masa', 'status.next': 'Seterusnya',
+      'status.live': 'LANGSUNG', 'status.ft': 'Tamat Masa', 'status.next': 'Seterusnya', 'status.tbd': 'TBD',
+      'wc.tbc': 'Pasukan belum disahkan',
       'fixtures.aipick': 'Pilihan AI', 'fixtures.cta': 'Lihat ramalan →',
 
       'strip.live.t': 'Perlawanan Langsung', 'strip.live.s': 'Tonton bila-bila masa',
@@ -207,7 +209,8 @@
       'fixtures.sub': '关键淘汰赛的 AI 预测——随赛程推进实时更新。',
       'stage.qf': '四分之一决赛', 'stage.sf': '半决赛', 'stage.third': '季军赛', 'stage.final': '决赛',
       'stage.group': '小组赛', 'stage.r16': '16强',
-      'status.live': '进行中', 'status.ft': '完场', 'status.next': '下一场',
+      'status.live': '进行中', 'status.ft': '完场', 'status.next': '下一场', 'status.tbd': '待定',
+      'wc.tbc': '对阵待定',
       'fixtures.aipick': 'AI 精选', 'fixtures.cta': '查看预测 →',
 
       'strip.live.t': '实时比赛', 'strip.live.s': '随时观看',
