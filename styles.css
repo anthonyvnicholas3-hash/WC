@@ -622,6 +622,73 @@ h1, h2, h3 {
 .wc-pred-cta:hover { color: #fff; }
 
 /* ==========================================================================
+   ROAD TO THE FINAL — fixtures list (gold + navy)
+   ========================================================================== */
+.fixtures { padding: 46px 0 90px; }
+.fixtures .section-head { margin-bottom: 40px; }
+.fixtures .section-head .kicker { color: var(--gold); }
+.fixtures-list { display: grid; gap: 14px; max-width: 940px; margin: 0 auto; }
+
+.fixture {
+  display: grid;
+  grid-template-columns: 190px 1fr auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 26px;
+  border-radius: 16px;
+  border: 1px solid rgba(245, 197, 66, 0.18);
+  background: linear-gradient(180deg, rgba(20, 42, 92, 0.35), rgba(8, 16, 39, 0.5));
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.fixture:hover { border-color: rgba(245, 197, 66, 0.45); transform: translateY(-2px); }
+
+.fx-stage { display: flex; flex-direction: column; gap: 7px; }
+.fx-badge {
+  align-self: flex-start;
+  font-family: 'Anton', sans-serif;
+  font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--gold);
+  padding: 4px 11px; border-radius: 6px;
+  background: rgba(245, 197, 66, 0.12);
+  border: 1px solid rgba(245, 197, 66, 0.3);
+}
+.fx-date { font-size: 12.5px; color: var(--text-faint); }
+
+.fx-teams {
+  display: flex; align-items: center; gap: 16px;
+  font-family: 'Anton', sans-serif; font-size: 19px; letter-spacing: 0.5px; color: #fff;
+}
+.fx-team { display: flex; align-items: center; gap: 9px; }
+.fx-flag { font-size: 22px; line-height: 1; }
+.fx-vs { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: var(--gold-3); }
+
+.fx-pick { display: flex; flex-direction: column; gap: 3px; text-align: right; min-width: 108px; }
+.fx-pick-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-faint); }
+.fx-pick-val { font-size: 15px; color: var(--text-dim); }
+.fx-pick-val b { color: var(--gold); font-size: 16px; }
+
+.fx-cta { color: var(--gold-3); font-weight: 700; font-size: 14px; white-space: nowrap; }
+.fx-cta:hover { color: #fff; }
+
+.fixture-final {
+  border-color: rgba(245, 197, 66, 0.55);
+  background: linear-gradient(180deg, rgba(245, 197, 66, 0.14), rgba(8, 16, 39, 0.55));
+  box-shadow: 0 20px 50px -30px rgba(245, 197, 66, 0.5);
+}
+.fixture-final .fx-badge { background: var(--gold); color: #1a1200; border-color: var(--gold); }
+
+@media (max-width: 720px) {
+  .fixture {
+    grid-template-columns: 1fr auto;
+    gap: 14px 16px;
+  }
+  .fx-stage { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 12px; }
+  .fx-teams { grid-column: 1; font-size: 17px; gap: 12px; }
+  .fx-pick { grid-column: 2; text-align: right; }
+  .fx-cta { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
    TRUST / FEATURE STRIP
    ========================================================================== */
 .strip {

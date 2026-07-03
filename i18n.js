@@ -29,8 +29,14 @@
       'wc.title1': 'World Cup', 'wc.date': 'July 7, 2026',
       'wc.days': 'Days', 'wc.hrs': 'Hrs', 'wc.min': 'Min', 'wc.sec': 'Sec',
       'wc.predlabel': 'Sample AI Pick',
-      'wc.predvalue': 'Portugal Win · <b>61%</b> confidence',
+      'wc.predvalue': 'Spain Win · <b>81%</b> confidence',
       'wc.predcta': 'Learn more →',
+
+      'fixtures.kicker': 'Road to the final',
+      'fixtures.h2': 'Every big game <span class="accent">to the final</span>',
+      'fixtures.sub': 'AI predictions for the key knockout fixtures — updated as the bracket unfolds.',
+      'stage.qf': 'Quarter-final', 'stage.sf': 'Semi-final', 'stage.third': 'Third place', 'stage.final': 'Final',
+      'fixtures.aipick': 'AI pick', 'fixtures.cta': 'See prediction →',
 
       'strip.live.t': 'Live Matches', 'strip.live.s': 'Watch anytime',
       'strip.stats.t': 'Real-Time Stats', 'strip.stats.s': 'Stay ahead',
@@ -76,7 +82,7 @@
 
       'footer.about': 'AI-powered football predictions with confidence scores and live match stats. Explore live scores and predictions on 180Score.',
       'footer.explore': 'Explore', 'footer.company': 'Company', 'footer.legal': 'Legal',
-      'footer.featmatch': 'Featured match', 'footer.features': 'Features', 'footer.how': 'How it works',
+      'footer.featmatch': 'Featured match', 'footer.road': 'Road to the final', 'footer.features': 'Features', 'footer.how': 'How it works',
       'footer.learn': 'Learn More', 'footer.aboutlink': 'About', 'footer.accuracy': 'Accuracy',
       'footer.visit': 'Visit 180Score',
       'footer.tos': 'Terms of Service', 'footer.pp': 'Privacy Policy', 'footer.cookie': 'Cookie Policy',
@@ -106,8 +112,14 @@
       'wc.title1': 'Piala Dunia', 'wc.date': '7 Julai 2026',
       'wc.days': 'Hari', 'wc.hrs': 'Jam', 'wc.min': 'Minit', 'wc.sec': 'Saat',
       'wc.predlabel': 'Contoh Pilihan AI',
-      'wc.predvalue': 'Portugal Menang · <b>61%</b> keyakinan',
+      'wc.predvalue': 'Sepanyol Menang · <b>81%</b> keyakinan',
       'wc.predcta': 'Ketahui lagi →',
+
+      'fixtures.kicker': 'Menuju ke final',
+      'fixtures.h2': 'Setiap perlawanan besar <span class="accent">hingga ke final</span>',
+      'fixtures.sub': 'Ramalan AI untuk perlawanan kalah mati utama — dikemas kini apabila pusingan berlangsung.',
+      'stage.qf': 'Suku akhir', 'stage.sf': 'Separuh akhir', 'stage.third': 'Tempat ketiga', 'stage.final': 'Final',
+      'fixtures.aipick': 'Pilihan AI', 'fixtures.cta': 'Lihat ramalan →',
 
       'strip.live.t': 'Perlawanan Langsung', 'strip.live.s': 'Tonton bila-bila masa',
       'strip.stats.t': 'Statistik Masa Nyata', 'strip.stats.s': 'Sentiasa di hadapan',
@@ -153,7 +165,7 @@
 
       'footer.about': 'Ramalan bola sepak berkuasa AI dengan skor keyakinan dan statistik perlawanan langsung. Teroka skor langsung dan ramalan di 180Score.',
       'footer.explore': 'Teroka', 'footer.company': 'Syarikat', 'footer.legal': 'Undang-undang',
-      'footer.featmatch': 'Perlawanan pilihan', 'footer.features': 'Ciri', 'footer.how': 'Cara ia berfungsi',
+      'footer.featmatch': 'Perlawanan pilihan', 'footer.road': 'Menuju ke final', 'footer.features': 'Ciri', 'footer.how': 'Cara ia berfungsi',
       'footer.learn': 'Ketahui Lagi', 'footer.aboutlink': 'Tentang', 'footer.accuracy': 'Ketepatan',
       'footer.visit': 'Lawati 180Score',
       'footer.tos': 'Terma Perkhidmatan', 'footer.pp': 'Dasar Privasi', 'footer.cookie': 'Dasar Kuki',
@@ -183,8 +195,14 @@
       'wc.title1': '世界杯', 'wc.date': '2026年7月7日',
       'wc.days': '天', 'wc.hrs': '时', 'wc.min': '分', 'wc.sec': '秒',
       'wc.predlabel': 'AI 精选示例',
-      'wc.predvalue': '葡萄牙胜 · <b>61%</b> 置信度',
+      'wc.predvalue': '西班牙胜 · <b>81%</b> 置信度',
       'wc.predcta': '了解更多 →',
+
+      'fixtures.kicker': '通往决赛之路',
+      'fixtures.h2': '直通决赛的<span class="accent">每场大战</span>',
+      'fixtures.sub': '关键淘汰赛的 AI 预测——随赛程推进实时更新。',
+      'stage.qf': '四分之一决赛', 'stage.sf': '半决赛', 'stage.third': '季军赛', 'stage.final': '决赛',
+      'fixtures.aipick': 'AI 精选', 'fixtures.cta': '查看预测 →',
 
       'strip.live.t': '实时比赛', 'strip.live.s': '随时观看',
       'strip.stats.t': '实时数据', 'strip.stats.s': '抢占先机',
@@ -230,7 +248,7 @@
 
       'footer.about': 'AI 驱动的足球预测，附带置信度评分和实时比赛数据。在 180Score 探索实时比分与预测。',
       'footer.explore': '探索', 'footer.company': '公司', 'footer.legal': '法律',
-      'footer.featmatch': '焦点赛事', 'footer.features': '功能', 'footer.how': '运作方式',
+      'footer.featmatch': '焦点赛事', 'footer.road': '通往决赛之路', 'footer.features': '功能', 'footer.how': '运作方式',
       'footer.learn': '了解更多', 'footer.aboutlink': '关于', 'footer.accuracy': '准确率',
       'footer.visit': '访问 180Score',
       'footer.tos': '服务条款', 'footer.pp': '隐私政策', 'footer.cookie': 'Cookie 政策',
