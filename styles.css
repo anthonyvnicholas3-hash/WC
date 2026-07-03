@@ -662,6 +662,55 @@ h1, h2, h3 {
 .cta .btn-primary { background: #0b0913; box-shadow: 0 14px 34px -10px rgba(0,0,0,0.6); }
 .cta .btn-primary:hover { background: #14111f; }
 
+/* ---------- Learn more / waitlist ---------- */
+.learn { padding: 100px 0; }
+.learn-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 32px;
+  padding: 64px 48px;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  background:
+    radial-gradient(620px 340px at 50% -10%, rgba(124, 58, 237, 0.4), transparent 60%),
+    linear-gradient(180deg, var(--surface), var(--bg-2));
+  box-shadow: 0 40px 90px -40px var(--purple-glow), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.learn-card .kicker {
+  font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--purple-3); margin-bottom: 16px;
+}
+.learn-card h2 { font-size: clamp(32px, 4.6vw, 52px); margin-bottom: 20px; }
+.learn-lead {
+  color: var(--text-dim); font-size: 18px; max-width: 620px; margin: 0 auto 30px;
+}
+.learn-lead b { color: #fff; }
+.learn-list {
+  list-style: none; margin: 0 auto 34px; padding: 0;
+  display: inline-grid; gap: 12px; text-align: left;
+}
+.learn-list li {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--text-dim); font-size: 16.5px;
+}
+.learn-list .tick {
+  flex: none;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 13px; color: #fff;
+  background: var(--grad-purple);
+  box-shadow: 0 4px 12px -3px var(--purple-glow);
+}
+.learn-actions {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.learn-email { color: var(--text-faint); font-size: 15px; margin: 0; }
+.learn-email a { color: var(--purple-3); font-weight: 600; }
+.learn-email a:hover { color: #fff; }
+
 /* ---------- Footer ---------- */
 .footer {
   background: var(--bg);
@@ -787,5 +836,7 @@ h1, h2, h3 {
   .band-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .cta { padding: 52px 22px; }
+  .learn-card { padding: 44px 22px; }
+  .learn-actions .btn { width: 100%; justify-content: center; }
   .hero-cta .btn { width: 100%; justify-content: center; }
 }
