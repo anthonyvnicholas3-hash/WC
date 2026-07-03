@@ -60,12 +60,28 @@ confidence, and once a game is played type the score into `result` (e.g. `2-1`).
 The live site reflects it on the next page load. No code, no more uploads. If
 the sheet is ever unreachable, the site falls back to the list in `matches.js`.
 
-**Columns:** `stage, date, home, homeFlag, away, awayFlag, pick, confidence, result`
+**Columns:** `stage, date, home, away, pick, confidence, result`
 - `stage` = `group` · `r16` · `qf` · `sf` · `third` · `final` (or any text)
 - `date` = `YYYY-MM-DD HH:mm` (in the sheet's timezone offset) — edit these to the official schedule
-- `homeFlag` / `awayFlag` = an emoji flag (🇪🇸); leave blank for TBD
+- `home` / `away` = **just the country name** (e.g. `Spain`). The **flag is added
+  automatically** — you never type flag emojis. Use `TBD` for undecided.
 - `pick` / `confidence` = your prediction; leave blank until you decide
 - `result` = blank until played, then e.g. `2-1` (the ✔/✕ is worked out for you)
+
+> Flags are generated from the name (see the country list in `team-names.txt`).
+> Optional: add `homeFlag` / `awayFlag` columns with an emoji to override one.
+
+### Make team entry a dropdown (recommended)
+
+So you never mistype a country:
+
+1. In your sheet, add a second tab called **Teams** and paste the contents of
+   `team-names.txt` into column A (one country per row).
+2. Back on the fixtures tab, select the **home** and **away** columns →
+   **Data → Data validation → Add rule → Criteria: "Dropdown (from a range)"
+   → `=Teams!A:A`**.
+3. Now each cell shows a ▾ dropdown — pick the country, and the flag appears on
+   the site automatically.
 
 ### Or just edit `matches.js`
 

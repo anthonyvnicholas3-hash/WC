@@ -32,6 +32,46 @@
   function isTBD(n) { return !n || /^tbd$/i.test(String(n).trim()); }
   function hasVal(v) { return v != null && String(v).trim() !== ''; }
 
+  /* Country name -> flag emoji, so the sheet only needs the team NAME.
+     (You can still put an emoji in the homeFlag/awayFlag column to override.) */
+  var ISO2 = {
+    spain: 'ES', france: 'FR', germany: 'DE', portugal: 'PT', netherlands: 'NL', holland: 'NL',
+    italy: 'IT', belgium: 'BE', croatia: 'HR', denmark: 'DK', switzerland: 'CH', poland: 'PL',
+    serbia: 'RS', austria: 'AT', ukraine: 'UA', turkey: 'TR', turkiye: 'TR', sweden: 'SE',
+    norway: 'NO', czechia: 'CZ', 'czech republic': 'CZ', hungary: 'HU', romania: 'RO', greece: 'GR',
+    russia: 'RU', ireland: 'IE', slovenia: 'SI', slovakia: 'SK', albania: 'AL', finland: 'FI',
+    'bosnia and herzegovina': 'BA', bosnia: 'BA', iceland: 'IS', georgia: 'GE',
+    brazil: 'BR', argentina: 'AR', uruguay: 'UY', colombia: 'CO', chile: 'CL', peru: 'PE',
+    ecuador: 'EC', paraguay: 'PY', venezuela: 'VE', bolivia: 'BO',
+    usa: 'US', 'united states': 'US', mexico: 'MX', canada: 'CA', 'costa rica': 'CR', panama: 'PA',
+    honduras: 'HN', jamaica: 'JM', 'el salvador': 'SV', guatemala: 'GT', 'trinidad and tobago': 'TT',
+    morocco: 'MA', senegal: 'SN', nigeria: 'NG', egypt: 'EG', ghana: 'GH', cameroon: 'CM',
+    algeria: 'DZ', tunisia: 'TN', 'ivory coast': 'CI', "cote d'ivoire": 'CI', mali: 'ML',
+    'south africa': 'ZA', 'dr congo': 'CD', 'congo dr': 'CD', 'burkina faso': 'BF', 'cape verde': 'CV',
+    japan: 'JP', 'south korea': 'KR', korea: 'KR', 'korea republic': 'KR', 'north korea': 'KP',
+    iran: 'IR', 'saudi arabia': 'SA', australia: 'AU', qatar: 'QA', iraq: 'IQ',
+    uae: 'AE', 'united arab emirates': 'AE', china: 'CN', uzbekistan: 'UZ', jordan: 'JO', oman: 'OM',
+    bahrain: 'BH', india: 'IN', indonesia: 'ID', malaysia: 'MY', thailand: 'TH', vietnam: 'VN',
+    'new zealand': 'NZ'
+  };
+  var DIRECT = { // subdivisions that don't have ISO2 flags
+    england: '🏴\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}',
+    scotland: '🏴\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}',
+    wales: '🏴\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}'
+  };
+  function iso2flag(cc) {
+    cc = cc.toUpperCase();
+    return String.fromCodePoint(0x1F1E6 + cc.charCodeAt(0) - 65, 0x1F1E6 + cc.charCodeAt(1) - 65);
+  }
+  function flagFor(name, override) {
+    if (hasVal(override)) return override;             // explicit emoji in the sheet wins
+    var key = String(name || '').toLowerCase().trim()
+      .normalize('NFD').replace(/[̀-ͯ]/g, '');
+    if (DIRECT[key]) return DIRECT[key];
+    if (ISO2[key]) return iso2flag(ISO2[key]);
+    return '🏳️';                                       // known team, flag not in list
+  }
+
   function toDate(str) {
     if (!str) return null;
     var s = String(str).trim();
@@ -169,7 +209,7 @@
       return '<div class="wc-team"><span class="wc-flag-e tbd">?</span>' +
              '<span class="wc-team-name" data-i18n="status.tbd">TBD</span></div>';
     }
-    return '<div class="wc-team"><span class="wc-flag-e">' + esc(flag || '🏳️') + '</span>' +
+    return '<div class="wc-team"><span class="wc-flag-e">' + esc(flagFor(name, flag)) + '</span>' +
            '<span class="wc-team-name">' + esc(name) + '</span></div>';
   }
 
@@ -245,7 +285,7 @@
     if (isTBD(name)) {
       return '<span class="fx-team fx-tbd"><span class="fx-flag">•</span> <span data-i18n="status.tbd">TBD</span></span>';
     }
-    return '<span class="fx-team"><span class="fx-flag">' + esc(flag || '🏳️') + '</span> ' + esc(name) + '</span>';
+    return '<span class="fx-team"><span class="fx-flag">' + esc(flagFor(name, flag)) + '</span> ' + esc(name) + '</span>';
   }
 
   function renderList(list) {

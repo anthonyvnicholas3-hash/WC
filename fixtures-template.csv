@@ -1,9 +1,9 @@
-stage,date,home,homeFlag,away,awayFlag,pick,confidence,result
-qf,2026-07-09 03:00,TBD,,TBD,,,,
-qf,2026-07-10 03:00,TBD,,TBD,,,,
-qf,2026-07-11 03:00,TBD,,TBD,,,,
-qf,2026-07-11 07:00,TBD,,TBD,,,,
-sf,2026-07-14 03:00,TBD,,TBD,,,,
-sf,2026-07-15 03:00,TBD,,TBD,,,,
-third,2026-07-18 03:00,TBD,,TBD,,,,
-final,2026-07-19 03:00,TBD,,TBD,,,,
+stage,date,home,away,pick,confidence,result
+qf,2026-07-09 03:00,TBD,TBD,,,
+qf,2026-07-10 03:00,TBD,TBD,,,
+qf,2026-07-11 03:00,TBD,TBD,,,
+qf,2026-07-11 07:00,TBD,TBD,,,
+sf,2026-07-14 03:00,TBD,TBD,,,
+sf,2026-07-15 03:00,TBD,TBD,,,
+third,2026-07-18 03:00,TBD,TBD,,,
+final,2026-07-19 03:00,TBD,TBD,,,
