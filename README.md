@@ -14,6 +14,36 @@ prediction product. Built as static HTML/CSS/JS — no build step required.
 Shared `styles.css` and `script.js` (mobile nav toggle) power all pages.
 Navigation appears in both the top bar and the footer on every page.
 
+## Fixtures (self-updating)
+
+The World Cup banner and the "Road to the Final" list are **data-driven** and
+**time-aware** — you do **not** edit HTML to keep them current.
+
+- All matches live in **`matches.js`** (one simple list).
+- The banner always shows the **next upcoming match** and counts down to it.
+- When a match's date/time passes, it's automatically marked **Full Time**
+  and dimmed in the list — the banner advances to the next game on its own.
+- Add a `result` (e.g. `'2-0'`) to a match and it shows the score and a ✔/✕
+  on whether the AI pick was right.
+
+### Editing matches
+
+Open `matches.js`, edit the `PREDICTAI_MATCHES` list (teams, flags, date,
+pick, confidence, result), save, re-upload that one file. Done.
+
+### Zero-upload option — Google Sheet
+
+To manage fixtures without touching any file:
+
+1. Make a Google Sheet with headers in row 1:
+   `stage, date, home, homeFlag, away, awayFlag, pick, confidence, result`
+2. **File → Share → Publish to web → (this sheet) → CSV → Publish.**
+3. Copy that CSV link into `sheetCsvUrl` in `matches.js` (one time).
+
+After that, edit the spreadsheet anytime and the live site updates on the
+next page load — no code, no re-upload. If the sheet is ever unreachable,
+the site falls back to the built-in list in `matches.js`.
+
 ## Languages
 
 The site supports **English, Bahasa Melayu and 中文 (Simplified Chinese)**.

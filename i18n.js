@@ -29,13 +29,15 @@
       'wc.title1': 'World Cup', 'wc.date': 'July 7, 2026',
       'wc.days': 'Days', 'wc.hrs': 'Hrs', 'wc.min': 'Min', 'wc.sec': 'Sec',
       'wc.predlabel': 'Sample AI Pick',
-      'wc.predvalue': 'Spain Win · <b>81%</b> confidence',
+      'wc.predvalue': '{team} Win · <b>{pct}%</b> confidence',
       'wc.predcta': 'Learn more →',
 
       'fixtures.kicker': 'Road to the final',
       'fixtures.h2': 'Every big game <span class="accent">to the final</span>',
       'fixtures.sub': 'AI predictions for the key knockout fixtures — updated as the bracket unfolds.',
       'stage.qf': 'Quarter-final', 'stage.sf': 'Semi-final', 'stage.third': 'Third place', 'stage.final': 'Final',
+      'stage.group': 'Group stage', 'stage.r16': 'Round of 16',
+      'status.live': 'LIVE', 'status.ft': 'Full Time', 'status.next': 'Next up',
       'fixtures.aipick': 'AI pick', 'fixtures.cta': 'See prediction →',
 
       'strip.live.t': 'Live Matches', 'strip.live.s': 'Watch anytime',
@@ -112,13 +114,15 @@
       'wc.title1': 'Piala Dunia', 'wc.date': '7 Julai 2026',
       'wc.days': 'Hari', 'wc.hrs': 'Jam', 'wc.min': 'Minit', 'wc.sec': 'Saat',
       'wc.predlabel': 'Contoh Pilihan AI',
-      'wc.predvalue': 'Sepanyol Menang · <b>81%</b> keyakinan',
+      'wc.predvalue': '{team} Menang · <b>{pct}%</b> keyakinan',
       'wc.predcta': 'Ketahui lagi →',
 
       'fixtures.kicker': 'Menuju ke final',
       'fixtures.h2': 'Setiap perlawanan besar <span class="accent">hingga ke final</span>',
       'fixtures.sub': 'Ramalan AI untuk perlawanan kalah mati utama — dikemas kini apabila pusingan berlangsung.',
       'stage.qf': 'Suku akhir', 'stage.sf': 'Separuh akhir', 'stage.third': 'Tempat ketiga', 'stage.final': 'Final',
+      'stage.group': 'Peringkat kumpulan', 'stage.r16': 'Pusingan 16',
+      'status.live': 'LANGSUNG', 'status.ft': 'Tamat Masa', 'status.next': 'Seterusnya',
       'fixtures.aipick': 'Pilihan AI', 'fixtures.cta': 'Lihat ramalan →',
 
       'strip.live.t': 'Perlawanan Langsung', 'strip.live.s': 'Tonton bila-bila masa',
@@ -195,13 +199,15 @@
       'wc.title1': '世界杯', 'wc.date': '2026年7月7日',
       'wc.days': '天', 'wc.hrs': '时', 'wc.min': '分', 'wc.sec': '秒',
       'wc.predlabel': 'AI 精选示例',
-      'wc.predvalue': '西班牙胜 · <b>81%</b> 置信度',
+      'wc.predvalue': '{team}胜 · <b>{pct}%</b> 置信度',
       'wc.predcta': '了解更多 →',
 
       'fixtures.kicker': '通往决赛之路',
       'fixtures.h2': '直通决赛的<span class="accent">每场大战</span>',
       'fixtures.sub': '关键淘汰赛的 AI 预测——随赛程推进实时更新。',
       'stage.qf': '四分之一决赛', 'stage.sf': '半决赛', 'stage.third': '季军赛', 'stage.final': '决赛',
+      'stage.group': '小组赛', 'stage.r16': '16强',
+      'status.live': '进行中', 'status.ft': '完场', 'status.next': '下一场',
       'fixtures.aipick': 'AI 精选', 'fixtures.cta': '查看预测 →',
 
       'strip.live.t': '实时比赛', 'strip.live.s': '随时观看',
@@ -260,8 +266,11 @@
   };
 
   var STORAGE_KEY = 'predictai_lang';
+  var current = 'en';
 
-  function translate(lang) {
+  function translate(lang, dispatch) {
+    current = (T[lang] ? lang : 'en');
+    lang = current;
     var dict = T[lang] || T.en;
     document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-Hans' : lang);
 
@@ -279,6 +288,10 @@
     var opts = document.querySelectorAll('[data-lang-option]');
     for (var k = 0; k < opts.length; k++) {
       opts[k].classList.toggle('active', opts[k].getAttribute('data-lang-option') === lang);
+    }
+
+    if (dispatch !== false) {
+      document.dispatchEvent(new CustomEvent('predictai:langchange', { detail: lang }));
     }
   }
 
@@ -339,6 +352,12 @@
       });
     }
   }
+
+  window.PredictAI = {
+    getLang: function () { return current; },
+    t: function (key) { var d = T[current] || T.en; return d[key]; },
+    apply: function () { translate(current, false); }
+  };
 
   function boot() {
     var saved = null;

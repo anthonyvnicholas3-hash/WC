@@ -130,35 +130,8 @@
           <span class="wc-title-2">2026</span>
         </div>
       </div>
-      <div class="wc-meta">
-        <div class="wc-chip"><span class="wc-ico">📅</span><span data-i18n="wc.date">July 7, 2026</span></div>
-        <div class="wc-chip"><span class="wc-ico">🕒</span><span>03:00 <em>(GMT+8)</em></span></div>
-      </div>
-      <div class="wc-countdown" id="wcCountdown" aria-label="Countdown to kickoff">
-        <div class="wc-unit"><span class="wc-num" data-d>00</span><span class="wc-lbl" data-i18n="wc.days">Days</span></div>
-        <div class="wc-sep">:</div>
-        <div class="wc-unit"><span class="wc-num" data-h>00</span><span class="wc-lbl" data-i18n="wc.hrs">Hrs</span></div>
-        <div class="wc-sep">:</div>
-        <div class="wc-unit"><span class="wc-num" data-m>00</span><span class="wc-lbl" data-i18n="wc.min">Min</span></div>
-        <div class="wc-sep">:</div>
-        <div class="wc-unit"><span class="wc-num" data-s>00</span><span class="wc-lbl" data-i18n="wc.sec">Sec</span></div>
-      </div>
-      <div class="wc-vs">
-        <div class="wc-team">
-          <span class="wc-flag pt"></span>
-          <span class="wc-team-name">Portugal</span>
-        </div>
-        <span class="wc-vs-badge">VS</span>
-        <div class="wc-team">
-          <span class="wc-flag es"></span>
-          <span class="wc-team-name">Spain</span>
-        </div>
-      </div>
-      <div class="wc-pred">
-        <span class="wc-pred-label" data-i18n="wc.predlabel">Sample AI Pick</span>
-        <span class="wc-pred-value" data-i18n="wc.predvalue">Spain Win · <b>81%</b> confidence</span>
-        <a href="https://180score.com/" target="_blank" rel="noopener noreferrer" class="wc-pred-cta" data-i18n="wc.predcta">Learn more →</a>
-      </div>
+      <!-- Match details are rendered from matches.js (or a Google Sheet) by fixtures.js -->
+      <div id="wcMatch" class="wc-match"></div>
     </div>
   </div>
 </section>
@@ -171,93 +144,7 @@
       <h2 data-i18n="fixtures.h2">Every big game <span class="accent">to the final</span></h2>
       <p data-i18n="fixtures.sub">AI predictions for the key knockout fixtures — updated as the bracket unfolds.</p>
     </div>
-    <div class="fixtures-list">
-
-      <div class="fixture">
-        <div class="fx-stage"><span class="fx-badge" data-i18n="stage.qf">Quarter-final</span><span class="fx-date">Jul 10, 2026 · 03:00</span></div>
-        <div class="fx-teams">
-          <span class="fx-team"><span class="fx-flag">🇧🇷</span> Brazil</span>
-          <span class="fx-vs">VS</span>
-          <span class="fx-team"><span class="fx-flag">🇫🇷</span> France</span>
-        </div>
-        <div class="fx-pick">
-          <span class="fx-pick-label" data-i18n="fixtures.aipick">AI pick</span>
-          <span class="fx-pick-val">France · <b>54%</b></span>
-        </div>
-        <a href="https://180score.com/" target="_blank" rel="noopener noreferrer" class="fx-cta" data-i18n="fixtures.cta">See prediction →</a>
-      </div>
-
-      <div class="fixture">
-        <div class="fx-stage"><span class="fx-badge" data-i18n="stage.qf">Quarter-final</span><span class="fx-date">Jul 11, 2026 · 03:00</span></div>
-        <div class="fx-teams">
-          <span class="fx-team"><span class="fx-flag">🇦🇷</span> Argentina</span>
-          <span class="fx-vs">VS</span>
-          <span class="fx-team"><span class="fx-flag">🇳🇱</span> Netherlands</span>
-        </div>
-        <div class="fx-pick">
-          <span class="fx-pick-label" data-i18n="fixtures.aipick">AI pick</span>
-          <span class="fx-pick-val">Argentina · <b>60%</b></span>
-        </div>
-        <a href="https://180score.com/" target="_blank" rel="noopener noreferrer" class="fx-cta" data-i18n="fixtures.cta">See prediction →</a>
-      </div>
-
-      <div class="fixture">
-        <div class="fx-stage"><span class="fx-badge" data-i18n="stage.sf">Semi-final</span><span class="fx-date">Jul 14, 2026 · 03:00</span></div>
-        <div class="fx-teams">
-          <span class="fx-team"><span class="fx-flag">🇪🇸</span> Spain</span>
-          <span class="fx-vs">VS</span>
-          <span class="fx-team"><span class="fx-flag">🇧🇷</span> Brazil</span>
-        </div>
-        <div class="fx-pick">
-          <span class="fx-pick-label" data-i18n="fixtures.aipick">AI pick</span>
-          <span class="fx-pick-val">Spain · <b>57%</b></span>
-        </div>
-        <a href="https://180score.com/" target="_blank" rel="noopener noreferrer" class="fx-cta" data-i18n="fixtures.cta">See prediction →</a>
-      </div>
-
-      <div class="fixture">
-        <div class="fx-stage"><span class="fx-badge" data-i18n="stage.sf">Semi-final</span><span class="fx-date">Jul 15, 2026 · 03:00</span></div>
-        <div class="fx-teams">
-          <span class="fx-team"><span class="fx-flag">🇦🇷</span> Argentina</span>
-          <span class="fx-vs">VS</span>
-          <span class="fx-team"><span class="fx-flag">🇩🇪</span> Germany</span>
-        </div>
-        <div class="fx-pick">
-          <span class="fx-pick-label" data-i18n="fixtures.aipick">AI pick</span>
-          <span class="fx-pick-val">Argentina · <b>55%</b></span>
-        </div>
-        <a href="https://180score.com/" target="_blank" rel="noopener noreferrer" class="fx-cta" data-i18n="fixtures.cta">See prediction →</a>
-      </div>
-
-      <div class="fixture">
-        <div class="fx-stage"><span class="fx-badge" data-i18n="stage.third">Third place</span><span class="fx-date">Jul 18, 2026 · 03:00</span></div>
-        <div class="fx-teams">
-          <span class="fx-team"><span class="fx-flag">🇧🇷</span> Brazil</span>
-          <span class="fx-vs">VS</span>
-          <span class="fx-team"><span class="fx-flag">🇩🇪</span> Germany</span>
-        </div>
-        <div class="fx-pick">
-          <span class="fx-pick-label" data-i18n="fixtures.aipick">AI pick</span>
-          <span class="fx-pick-val">Brazil · <b>62%</b></span>
-        </div>
-        <a href="https://180score.com/" target="_blank" rel="noopener noreferrer" class="fx-cta" data-i18n="fixtures.cta">See prediction →</a>
-      </div>
-
-      <div class="fixture fixture-final">
-        <div class="fx-stage"><span class="fx-badge" data-i18n="stage.final">Final</span><span class="fx-date">Jul 19, 2026 · 03:00</span></div>
-        <div class="fx-teams">
-          <span class="fx-team"><span class="fx-flag">🇪🇸</span> Spain</span>
-          <span class="fx-vs">VS</span>
-          <span class="fx-team"><span class="fx-flag">🇦🇷</span> Argentina</span>
-        </div>
-        <div class="fx-pick">
-          <span class="fx-pick-label" data-i18n="fixtures.aipick">AI pick</span>
-          <span class="fx-pick-val">Spain · <b>52%</b></span>
-        </div>
-        <a href="https://180score.com/" target="_blank" rel="noopener noreferrer" class="fx-cta" data-i18n="fixtures.cta">See prediction →</a>
-      </div>
-
-    </div>
+    <div class="fixtures-list" id="fixturesList"><!-- rendered by fixtures.js --></div>
   </div>
 </section>
 
@@ -445,7 +332,9 @@
   </div>
 </footer>
 
+<script src="matches.js"></script>
 <script src="i18n.js"></script>
+<script src="fixtures.js"></script>
 <script src="script.js"></script>
 
 </body>
