@@ -6,11 +6,16 @@
    each round is decided, fill in the real teams (and your AI pick) and the
    page updates — finished games are marked automatically as dates pass.
 
-   ── Recommended: manage everything from a Google Sheet (no re-uploads) ──────
+   ── Recommended: manage everything from a public Google Sheet (no re-uploads) ─
    1. Import the included  fixtures-template.csv  into a new Google Sheet.
-   2. File → Share → Publish to web → (sheet) → CSV → Publish, and copy the link.
-   3. Paste that link into  sheetCsvUrl  below (one time) and re-upload this file.
-   After that, you only ever edit the spreadsheet.
+   2. Make its data public, either way works:
+        A) Share → General access → "Anyone with the link" (Viewer), then just
+           copy the normal address-bar link, OR
+        B) File → Share → Publish to web → CSV → Publish, and copy that link.
+   3. Paste whichever link into  sheetCsvUrl  below (one time) and re-upload
+      this file. The code auto-converts edit / publish links into a CSV feed.
+   After that, you only ever edit the spreadsheet. (If option A is ever blocked
+   by the browser, switch to option B — it's the most reliable.)
 
    Sheet/columns (row 1 = headers, exact names):
      stage, date, home, homeFlag, away, awayFlag, pick, confidence, result

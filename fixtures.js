@@ -122,9 +122,29 @@
     });
   }
 
+  // Accept any Google Sheet link the user pastes and turn it into a CSV endpoint:
+  //  • an already-CSV url (…output=csv / export?format=csv / tqx=out:csv) → used as-is
+  //  • a normal edit url (…/d/<ID>/edit#gid=123) → converted to a CSV export
+  //  • a "Publish to web" html url → converted to …?output=csv
+  function normalizeSheetUrl(u) {
+    if (!u) return '';
+    u = String(u).trim();
+    if (/output=csv|format=csv|tqx=out:csv/i.test(u)) return u;
+    var pub = u.match(/\/spreadsheets\/d\/e\/([^/]+)\/pub/i);
+    if (pub) return 'https://docs.google.com/spreadsheets/d/e/' + pub[1] + '/pub?output=csv';
+    var id = u.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
+    if (id) {
+      var gid = (u.match(/[#&?]gid=(\d+)/) || [])[1];
+      return 'https://docs.google.com/spreadsheets/d/' + id[1] + '/gviz/tq?tqx=out:csv' +
+             (gid ? '&gid=' + gid : '');
+    }
+    return u;
+  }
+
   function loadMatches() {
-    if (cfg.sheetCsvUrl) {
-      return fetch(cfg.sheetCsvUrl, { cache: 'no-store' })
+    var sheet = normalizeSheetUrl(cfg.sheetCsvUrl);
+    if (sheet) {
+      return fetch(sheet, { cache: 'no-store' })
         .then(function (r) { if (!r.ok) throw new Error('sheet ' + r.status); return r.text(); })
         .then(function (txt) { return normalize(parseCSV(txt)); })
         .catch(function (e) {

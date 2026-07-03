@@ -34,15 +34,26 @@ kickoff. The starter data (`matches.js` / `fixtures-template.csv`) is the
 knockout bracket with **all teams set to TBD**. As each round is decided, type
 in the real teams — and your pick/confidence — and the page fills in.
 
-### Recommended: manage it from a Google Sheet (no re-uploads ever)
+### Recommended: manage it from a public Google Sheet (no re-uploads ever)
+
+> Note: the **Sheet** lives on Google Drive (that's fine). The **website files**
+> (`index.html`, etc.) can't be hosted on Google Drive — keep those on your
+> normal hosting (Namecheap). The hosted site fetches the public Sheet on load.
 
 1. **Create the sheet from the template.** In Google Sheets: **File → Import →
    Upload → `fixtures-template.csv`** (choose *Replace current sheet*). You now
    have the bracket with the right column headers.
-2. **Publish it as CSV.** **File → Share → Publish to web → pick the sheet →
-   CSV → Publish**, and copy the link it gives you.
-3. **Connect it once.** Paste that link into `sheetCsvUrl` in `matches.js`,
-   then upload `matches.js` one final time.
+2. **Make it public — either option works:**
+   - **A)** **Share → General access → "Anyone with the link" (Viewer)**, then
+     copy the normal link from your browser's address bar, **or**
+   - **B)** **File → Share → Publish to web → CSV → Publish**, and copy that link.
+3. **Connect it once.** Paste whichever link into `sheetCsvUrl` in `matches.js`
+   and upload `matches.js` one final time. The code auto-converts an edit link
+   or a publish link into a CSV feed — you don't need the exact CSV URL.
+
+If option A ever gets blocked by the browser (CORS), switch to option B; it's
+the most reliable. Either way, if the sheet is unreachable the site falls back
+to the built-in list in `matches.js`, so it never breaks.
 
 From then on you **only edit the spreadsheet** — add teams, set your pick and
 confidence, and once a game is played type the score into `result` (e.g. `2-1`).
